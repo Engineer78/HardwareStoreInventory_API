@@ -50,5 +50,12 @@ public class Proveedor {
     @Column(name = "direccion_proveedor")
     private String direccionProveedor;
 
+    /**
+     * Lista de relaciones entre el proveedor y los productos que suministra.
+     */
+    @OneToMany(mappedBy = "proveedor", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ProductoProveedor> productoProveedores = new ArrayList<>();
+
+
 
 }
