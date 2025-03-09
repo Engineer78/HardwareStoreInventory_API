@@ -219,4 +219,13 @@ public class Producto {
         return idProducto == producto.idProducto;
     }
 
+    /**
+     * Genera un código hash para este producto basado en su ID.
+     * @return código hash del producto.
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(idProducto);
+    }
+
 }
