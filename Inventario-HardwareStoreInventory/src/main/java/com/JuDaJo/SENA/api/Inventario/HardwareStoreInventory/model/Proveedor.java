@@ -56,6 +56,12 @@ public class Proveedor {
     @OneToMany(mappedBy = "proveedor", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProductoProveedor> productoProveedores = new ArrayList<>();
 
+    /**
+     * Constructor vacío requerido por JPA.
+     */
+    public Proveedor() {
+    }
+
 
 
 }
