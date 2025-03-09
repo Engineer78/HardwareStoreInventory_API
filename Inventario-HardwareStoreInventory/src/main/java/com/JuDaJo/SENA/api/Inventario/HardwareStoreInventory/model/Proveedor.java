@@ -12,4 +12,11 @@ import java.util.Objects;
  */
 @Entity
 public class Proveedor {
+
+    /**
+     * Identificador único del proveedor.
+     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer idProveedor;
 }
