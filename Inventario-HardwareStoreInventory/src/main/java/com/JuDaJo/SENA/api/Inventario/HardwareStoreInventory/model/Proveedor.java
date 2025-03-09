@@ -27,4 +27,13 @@ public class Proveedor {
     @Size(max = 100, message = "El nombre del proveedor no puede exceder los 100 caracteres")
     @Column(name = "nombre_proveedor")
     private String nombreProveedor;
+
+    /**
+     * NIT del proveedor.
+     */
+    @NotBlank(message = "El NIT del proveedor es obligatorio")
+    @Size(max = 20, message = "El NIT no puede exceder los 20 caracteres")
+    @Column(name = "nit_proveedor")
+    private String nitProveedor;
+
 }
