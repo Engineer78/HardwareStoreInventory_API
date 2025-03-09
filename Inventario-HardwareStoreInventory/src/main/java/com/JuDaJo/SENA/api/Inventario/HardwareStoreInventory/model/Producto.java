@@ -205,5 +205,18 @@ public class Producto {
         productoProveedor.setProducto(null); // Limpia la relación bidireccional
     }
 
+    /**
+     * Compara este producto con otro objeto.
+     * La comparación se realiza por el ID del producto.
+     * @param o Objeto a comparar.
+     * @return true si son iguales, false en caso contrario.
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Producto producto = (Producto) o;
+        return idProducto == producto.idProducto;
+    }
 
 }
