@@ -23,5 +23,11 @@ public class Producto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idProducto;
 
+    /**
+     * Código único del producto.
+     */
+    @Column(name = "codigo_producto")
+    @NotNull(message = "El código del producto no puede ser nulo")
+    private Integer codigoProducto;
 
 }
