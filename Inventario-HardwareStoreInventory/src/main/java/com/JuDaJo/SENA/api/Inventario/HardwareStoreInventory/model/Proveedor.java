@@ -126,7 +126,48 @@ public class Proveedor {
         this.productoProveedores = productoProveedores;
     }
 
+    /**
+     * Compara este proveedor con otro objeto para determinar si son iguales.
+     * La comparación se realiza en función del identificador único `idProveedor`.
+     * Si los objetos tienen la misma clase y el mismo `idProveedor`, se consideran iguales.
+     *
+     * @param o Objeto a comparar.
+     * @return true si los objetos son iguales, false en caso contrario.
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true; // Verifica si los dos objetos son el mismo.
+        if (o == null || getClass() != o.getClass()) return false; // Verifica que no sea nulo y que las clases coincidan.
+        Proveedor proveedor = (Proveedor) o; // Convierte el objeto a tipo Proveedor.
+        return idProveedor == proveedor.idProveedor; // Compara los identificadores únicos.
+    }
 
 
+    /**
+     * Calcula el código hash del proveedor basado en su identificador único `idProveedor`.
+     * Esto es útil para almacenar y recuperar objetos en estructuras de datos como HashMap o HashSet.
+     *
+     * @return Código hash del proveedor.
+     */
+    @Override
+    public int hashCode() {
+        return Objects.hash(idProveedor); // Genera el código hash basado en el identificador único.
+    }
 
+
+    /**
+     * Agrega un ProductoProveedor a la lista de relaciones.
+     */
+    public void agregarProductoProveedor(ProductoProveedor productoProveedor) {
+        this.productoProveedores.add(productoProveedor);
+        productoProveedor.setProveedor(this);
+    }
+
+    /**
+     * Elimina un ProductoProveedor de la lista de relaciones.
+     */
+    public void eliminarProductoProveedor(ProductoProveedor productoProveedor) {
+        this.productoProveedores.remove(productoProveedor);
+        productoProveedor.setProveedor(null);
+    }
 }
