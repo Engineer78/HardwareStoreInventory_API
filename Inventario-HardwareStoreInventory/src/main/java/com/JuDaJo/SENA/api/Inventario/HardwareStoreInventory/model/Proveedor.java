@@ -62,6 +62,21 @@ public class Proveedor {
     public Proveedor() {
     }
 
+    /**
+     * Constructor con parámetros para inicializar un proveedor.
+     *
+     * @param nombreProveedor  Nombre del proveedor.
+     * @param nitProveedor     NIT del proveedor.
+     * @param telefonoProveedor Teléfono del proveedor.
+     * @param direccionProveedor Dirección del proveedor.
+     */
+    public Proveedor(String nombreProveedor, String nitProveedor, String telefonoProveedor, String direccionProveedor) {
+        this.nombreProveedor = nombreProveedor;
+        this.nitProveedor = nitProveedor;
+        this.telefonoProveedor = telefonoProveedor;
+        this.direccionProveedor = direccionProveedor;
+    }
+
 
 
 }
