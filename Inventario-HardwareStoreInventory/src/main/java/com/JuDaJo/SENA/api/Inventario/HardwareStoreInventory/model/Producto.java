@@ -169,4 +169,41 @@ public class Producto {
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
+
+    //Métodos
+    /**
+     * Obtiene la lista de relaciones entre el producto y los proveedores.
+     * @return lista de relaciones Producto-Proveedor.
+     */
+    public List<ProductoProveedor> getProductoProveedores() {
+        return productoProveedores;
+    }
+
+    /**
+     * Establece la lista de relaciones entre el producto y los proveedores.
+     * @param productoProveedores Lista de relaciones Producto-Proveedor.
+     */
+    public void setProductoProveedores(List<ProductoProveedor> productoProveedores) {
+        this.productoProveedores = productoProveedores;
+    }
+
+    /**
+     * Agrega una relación entre este producto y un proveedor.
+     * @param productoProveedor Relación Producto-Proveedor.
+     */
+    public void agregarProductoProveedor(ProductoProveedor productoProveedor) {
+        productoProveedores.add(productoProveedor);
+        productoProveedor.setProducto(this); // Establece la relación bidireccional
+    }
+
+    /**
+     * Elimina una relación entre este producto y un proveedor.
+     * @param productoProveedor Relación Producto-Proveedor a eliminar.
+     */
+    public void eliminarProductoProveedor(ProductoProveedor productoProveedor) {
+        productoProveedores.remove(productoProveedor);
+        productoProveedor.setProducto(null); // Limpia la relación bidireccional
+    }
+
+
 }
