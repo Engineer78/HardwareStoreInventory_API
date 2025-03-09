@@ -36,4 +36,12 @@ public class Proveedor {
     @Column(name = "nit_proveedor")
     private String nitProveedor;
 
+    /**
+     * Teléfono del proveedor.
+     */
+    @Size(max = 15, message = "El teléfono no puede superar los 15 caracteres")
+    @Column(name = "telefono_proveedor")
+    private String telefonoProveedor;
+
+
 }
