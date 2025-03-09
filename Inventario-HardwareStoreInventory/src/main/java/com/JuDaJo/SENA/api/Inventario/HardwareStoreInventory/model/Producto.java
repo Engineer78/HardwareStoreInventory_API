@@ -50,4 +50,12 @@ public class Producto {
     @Column(name = "valor_unitario_producto")
     @Min(value = 0, message = "El valor unitario no puede ser negativo")
     private double valorUnitarioProducto;
+
+    /**
+     * Relación con la categoría a la que pertenece el producto.
+     */
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "categoria_id", nullable = false)
+    @NotNull(message = "La categoría no puede ser nula")
+    private Categoria categoria;
 }
