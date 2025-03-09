@@ -43,5 +43,12 @@ public class Proveedor {
     @Column(name = "telefono_proveedor")
     private String telefonoProveedor;
 
+    /**
+     * Dirección del proveedor.
+     */
+    @Size(max = 255, message = "La dirección no puede superar los 255 caracteres")
+    @Column(name = "direccion_proveedor")
+    private String direccionProveedor;
+
 
 }
