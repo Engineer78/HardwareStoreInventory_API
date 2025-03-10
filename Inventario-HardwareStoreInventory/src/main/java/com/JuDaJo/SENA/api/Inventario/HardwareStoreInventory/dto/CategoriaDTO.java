@@ -15,4 +15,9 @@ public class CategoriaDTO {
     // Constructor vacío
     public CategoriaDTO() {}
 
+    // Constructor con parámetros
+    public CategoriaDTO(Integer idCategoria, String nombreCategoria) {
+        this.idCategoria = idCategoria;
+        this.nombreCategoria = nombreCategoria;
+    }
 }
