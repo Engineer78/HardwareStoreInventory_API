@@ -9,7 +9,6 @@ import com.JuDaJo.SENA.api.Inventario.HardwareStoreInventory.model.ProductoProve
 import com.JuDaJo.SENA.api.Inventario.HardwareStoreInventory.model.Proveedor;
 import com.JuDaJo.SENA.api.Inventario.HardwareStoreInventory.repository.CategoriaRepository;
 import com.JuDaJo.SENA.api.Inventario.HardwareStoreInventory.repository.ProductoProveedorRepository;
-import com.JuDaJo.SENA.api.Inventario.HardwareStoreInventory.repository.ProductoRepository;
 import com.JuDaJo.SENA.api.Inventario.HardwareStoreInventory.repository.ProveedorRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
