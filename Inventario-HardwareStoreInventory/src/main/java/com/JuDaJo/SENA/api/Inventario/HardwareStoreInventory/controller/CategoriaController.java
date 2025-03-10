@@ -21,5 +21,13 @@ public class CategoriaController {
         this.categoriaRepository = categoriaRepository;
     }
 
-    
+    // Obtener todas las categorías
+    @GetMapping
+    public ResponseEntity<List<CategoriaDTO>> listarCategorias() {
+        List<Categoria> categorias = categoriaRepository.findAll();
+        List<CategoriaDTO> categoriaDTOs = categorias.stream()
+                .map(categoria -> new CategoriaDTO(categoria.getIdCategoria(), categoria.getNombreCategoria()))
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(categoriaDTOs);
+    }
 }
