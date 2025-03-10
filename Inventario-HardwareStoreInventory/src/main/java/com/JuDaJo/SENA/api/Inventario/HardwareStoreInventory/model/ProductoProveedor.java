@@ -34,6 +34,11 @@ public class ProductoProveedor {
      */
     @Column(name = "precio_compra", nullable = false)
     private double precioCompra;
+    /**
+     * Constructor vacío requerido por JPA.
+     */
+    public ProductoProveedor() {
+    }
 
 
 
