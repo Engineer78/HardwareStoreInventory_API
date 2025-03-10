@@ -35,7 +35,7 @@ public class ProductoController {
     private final ProductoProveedorRepository productoProveedorRepository;
     private final CategoriaRepository categoriaRepository;
     private final ProveedorRepository proveedorRepository;
-    
+
     /**
      * Constructor para inicializar los repositorios necesarios.
      *
@@ -54,6 +54,20 @@ public class ProductoController {
         this.productoProveedorRepository = productoProveedorRepository;
         this.categoriaRepository = categoriaRepository;
         this.proveedorRepository = proveedorRepository;
+    }
+
+    /**
+     * Obtiene todos los productos disponibles en el inventario.
+     *
+     * @return Lista de productos en formato DTO.
+     */
+    @GetMapping
+    public ResponseEntity<List<ProductoDTO>> getAllProductos() {
+        List<Producto> productos = productoRepository.findAll(); // Obtiene todos los productos
+        List<ProductoDTO> productosDTO = productos.stream()
+                .map(ProductoDTO::new) // Convierte cada Producto en un ProductoDTO
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(productosDTO);
     }
 
 }
