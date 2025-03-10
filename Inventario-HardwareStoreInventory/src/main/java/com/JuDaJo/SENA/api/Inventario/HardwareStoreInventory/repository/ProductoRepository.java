@@ -13,4 +13,14 @@ import java.util.Optional;
  */
 @Repository
 public interface ProductoRepository extends JpaRepository<Producto, Integer> {
+    // No se necesitan métodos personalizados por ahora, ya que JpaRepository
+    // proporciona los métodos básicos (save, findById, findAll, delete, etc.).
+
+    /**
+     * Busca un producto por su código.
+     *
+     * @param codigoProducto El código del producto.
+     * @return Un Optional que contiene el producto encontrado, o un Optional vacío si no se encuentra.
+     */
+    Optional<Producto> findByCodigoProducto(Integer codigoProducto);
 }
