@@ -51,5 +51,8 @@ public class ProductoDTO {
                         .map(pp -> pp.getIdProductoProveedor())
                         .collect(Collectors.toList()) : null;
     }
-
+    // Método para calcular el valor total del producto
+    public double getValorTotalProducto() {
+        return this.cantidad * this.valorUnitarioProducto;
+    }
 }
