@@ -20,4 +20,8 @@ public class ProductoCreationDTO {
 
     @NotNull(message = "El ID del proveedor es obligatorio")
     private Integer idProveedor;
+
+    // Constructor vacío para serialización/deserialización
+    public ProductoCreationDTO() {}
+
 }
