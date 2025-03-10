@@ -2,7 +2,6 @@ package com.JuDaJo.SENA.api.Inventario.HardwareStoreInventory.controller;
 
 import com.JuDaJo.SENA.api.Inventario.HardwareStoreInventory.dto.ProveedorDTO;
 import com.JuDaJo.SENA.api.Inventario.HardwareStoreInventory.model.Proveedor;
-import com.JuDaJo.SENA.api.Inventario.HardwareStoreInventory.repository.ProveedorRepository;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
