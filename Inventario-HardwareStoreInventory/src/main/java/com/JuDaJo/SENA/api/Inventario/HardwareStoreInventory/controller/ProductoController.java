@@ -146,7 +146,60 @@ public class ProductoController {
         }
     }
 
-    
+    // Actualizar un producto existente
+    @PutMapping("/{idProducto}")
+    @Transactional
+    public ResponseEntity<?> updateProducto(
+            @PathVariable Integer idProducto,
+            @Valid @RequestBody Producto productoActualizado,
+            BindingResult bindingResult
+    ) {
+        if (bindingResult.hasErrors()) {
+            ValidationErrorDTO errorDTO = new ValidationErrorDTO(bindingResult.getAllErrors());
+            return ResponseEntity.badRequest().body(errorDTO);
+        }
+
+        try {
+            Producto productoExistente = productoRepository.findById(idProducto)
+                    .orElseThrow(() -> new IllegalArgumentException("El producto con ID " + idProducto + " no existe."));
+
+            productoExistente.setCodigoProducto(productoActualizado.getCodigoProducto());
+            productoExistente.setNombreProducto(productoActualizado.getNombreProducto());
+            productoExistente.setCantidad(productoActualizado.getCantidad());
+            productoExistente.setValorUnitarioProducto(productoActualizado.getValorUnitarioProducto());
+
+            Categoria nuevaCategoria = categoriaRepository.findById(productoActualizado.getCategoria().getIdCategoria())
+                    .orElseThrow(() -> new IllegalArgumentException("La categoría con ID " + productoActualizado.getCategoria().getIdCategoria() + " no existe."));
+            productoExistente.setCategoria(nuevaCategoria);
+
+            List<ProductoProveedor> relacionesExistentes = new ArrayList<>(productoExistente.getProductoProveedores());
+            relacionesExistentes.forEach(relacion -> productoExistente.eliminarProductoProveedor(relacion));
+
+            productoActualizado.getProductoProveedores().stream()
+                    .distinct()
+                    .forEach(nuevaRelacion -> {
+                        Proveedor proveedor = proveedorRepository.findById(nuevaRelacion.getProveedor().getIdProveedor())
+                                .orElseThrow(() -> new IllegalArgumentException(
+                                        "El proveedor con ID " + nuevaRelacion.getProveedor().getIdProveedor() + " no existe."));
+
+                        ProductoProveedor productoProveedor = new ProductoProveedor();
+                        productoProveedor.setProducto(productoExistente);
+                        productoProveedor.setProveedor(proveedor);
+                        productoProveedor.setPrecioCompra(nuevaRelacion.getPrecioCompra());
+
+                        productoExistente.agregarProductoProveedor(productoProveedor);
+                    });
+
+            productoRepository.save(productoExistente);
+            return ResponseEntity.ok(new ProductoDTO(productoExistente));
+
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error al actualizar el producto: " + e.getMessage());
+        }
+    }
 
 
 }
