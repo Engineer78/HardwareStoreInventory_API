@@ -51,6 +51,78 @@ public class ProductoProveedor {
         this.proveedor = proveedor;
         this.precioCompra = precioCompra;
     }
+    /**
+     * Obtiene el identificador único de la relación Producto-Proveedor.
+     *
+     * @return ID de la relación.
+     */
+    public int getIdProductoProveedor() {
+        return idProductoProveedor;
+    }
+
+    /**
+     * Establece el identificador único de la relación Producto-Proveedor.
+     *
+     * @param idProductoProveedor ID de la relación.
+     */
+    public void setIdProductoProveedor(int idProductoProveedor) {
+        this.idProductoProveedor = idProductoProveedor;
+    }
+
+    /**
+     * Obtiene el producto asociado a esta relación.
+     *
+     * @return Producto asociado.
+     */
+    public Producto getProducto() {
+        return producto;
+    }
+
+    /**
+     * Establece el producto asociado a esta relación.
+     *
+     * @param producto Producto asociado.
+     */
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
+
+    /**
+     * Obtiene el proveedor asociado a esta relación.
+     *
+     * @return Proveedor asociado.
+     */
+    public Proveedor getProveedor() {
+        return proveedor;
+    }
+
+    /**
+     * Establece el proveedor asociado a esta relación.
+     *
+     * @param proveedor Proveedor asociado.
+     */
+    public void setProveedor(Proveedor proveedor) {
+        this.proveedor = proveedor;
+    }
+
+    /**
+     * Obtiene el precio de compra del producto proporcionado por el proveedor.
+     *
+     * @return Precio de compra.
+     */
+    public double getPrecioCompra() {
+        return precioCompra;
+    }
+
+    /**
+     * Establece el precio de compra del producto proporcionado por el proveedor.
+     *
+     * @param precioCompra Precio de compra.
+     */
+    public void setPrecioCompra(double precioCompra) {
+        this.precioCompra = precioCompra;
+    }
+
 
 
 
