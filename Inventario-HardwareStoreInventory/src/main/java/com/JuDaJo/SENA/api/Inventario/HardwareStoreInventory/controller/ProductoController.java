@@ -70,4 +70,33 @@ public class ProductoController {
         return ResponseEntity.ok(productosDTO);
     }
 
+    /**
+     * Obtiene un producto específico por su ID.
+     *
+     * @param idProducto Identificador único del producto.
+     * @return Producto en formato DTO si se encuentra, o código 404 si no existe.
+     */
+    @GetMapping("/{idProducto}")
+    public ResponseEntity<ProductoDTO> getProductoById(@PathVariable Integer idProducto) {
+        return productoRepository.findById(idProducto)
+                .map(ProductoDTO::new) // Convierte el Producto en un ProductoDTO
+                .map(ResponseEntity::ok) // Envuelve el DTO en una respuesta con código 200
+                .orElse(ResponseEntity.notFound().build()); // Devuelve 404 si no se encuentra
+    }
+
+    /**
+     * Obtiene un producto específico por su código.
+     *
+     * @param codigoProducto Código único del producto.
+     * @return Producto en formato DTO si se encuentra, o código 404 si no existe.
+     */
+    @GetMapping("/codigo/{codigoProducto}")
+    public ResponseEntity<ProductoDTO> getProductoByCodigo(@PathVariable Integer codigoProducto) {
+        return productoRepository.findByCodigoProducto(codigoProducto) // Método del repositorio
+                .map(ProductoDTO::new) // Convierte el Producto en un ProductoDTO
+                .map(ResponseEntity::ok) // Envuelve el DTO en una respuesta con código 200
+                .orElse(ResponseEntity.notFound().build()); // Devuelve 404 si no se encuentra
+    }
+
+
 }
