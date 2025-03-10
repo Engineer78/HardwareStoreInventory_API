@@ -55,4 +55,62 @@ public class ProductoDTO {
     public double getValorTotalProducto() {
         return this.cantidad * this.valorUnitarioProducto;
     }
+
+    // Getters y Setters para cada campo
+
+    public int getIdProducto() {
+        return idProducto;
+    }
+
+    public void setIdProducto(int idProducto) {
+        this.idProducto = idProducto;
+    }
+
+    public Integer getCodigoProducto() {
+        return codigoProducto;
+    }
+
+    public void setCodigoProducto(Integer codigoProducto) {
+        this.codigoProducto = codigoProducto;
+    }
+
+    public String getNombreProducto() {
+        return nombreProducto;
+    }
+
+    public void setNombreProducto(String nombreProducto) {
+        this.nombreProducto = nombreProducto;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
+    public double getValorUnitarioProducto() {
+        return valorUnitarioProducto;
+    }
+
+    public void setValorUnitarioProducto(double valorUnitarioProducto) {
+        this.valorUnitarioProducto = valorUnitarioProducto;
+    }
+
+    public String getNombreCategoria() {
+        return nombreCategoria;
+    }
+
+    public void setNombreCategoria(String nombreCategoria) {
+        this.nombreCategoria = nombreCategoria;
+    }
+
+    public List<Integer> getProductoProveedores() {
+        return productoProveedores;
+    }
+
+    public void setProductoProveedores(List<Integer> productoProveedores) {
+        this.productoProveedores = productoProveedores;
+    }
 }
