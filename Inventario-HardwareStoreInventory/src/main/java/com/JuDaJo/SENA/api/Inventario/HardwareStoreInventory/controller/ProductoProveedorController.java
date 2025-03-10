@@ -20,6 +20,16 @@ import java.util.stream.Collectors;
  * Controlador REST para gestionar las relaciones entre productos y proveedores.
  * Proporciona los puntos de entrada necesarios para operaciones relacionadas con ProductoProveedor.
  */
-
+@RestController
+@RequestMapping("/api/producto-proveedor") // Define el endpoint base para las rutas relacionadas con ProductoProveedor
 public class ProductoProveedorController {
+    // Repositorio para acceder y gestionar las relaciones entre productos y proveedores en la base de datos
+    private final ProductoProveedorRepository productoProveedorRepository;
+
+    // Repositorio para gestionar las operaciones relacionadas con productos
+    private final ProductoRepository productoRepository;
+
+    // Repositorio para gestionar las operaciones relacionadas con proveedores
+    private final ProveedorRepository proveedorRepository;
+
 }
