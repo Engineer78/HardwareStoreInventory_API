@@ -13,4 +13,7 @@ import java.util.stream.Collectors;
  */
 
 public class ValidationErrorDTO {
+
+    // Lista que contiene los mensajes de error de validación en formato de texto.
+    private List<String> errores;
 }
