@@ -37,4 +37,19 @@ public class ProductoDTO {
 
     // Constructor vacío para serialización/deserialización
     public ProductoDTO() {}
+
+    // Constructor que inicializa los campos desde la entidad Producto
+    public ProductoDTO(Producto producto) {
+        this.idProducto = producto.getIdProducto();
+        this.codigoProducto = producto.getCodigoProducto();
+        this.nombreProducto = producto.getNombreProducto();
+        this.cantidad = producto.getCantidad();
+        this.valorUnitarioProducto = producto.getValorUnitarioProducto();
+        this.nombreCategoria = (producto.getCategoria() != null) ? producto.getCategoria().getNombreCategoria() : null;
+        this.productoProveedores = (producto.getProductoProveedores() != null) ?
+                producto.getProductoProveedores().stream()
+                        .map(pp -> pp.getIdProductoProveedor())
+                        .collect(Collectors.toList()) : null;
+    }
+
 }
