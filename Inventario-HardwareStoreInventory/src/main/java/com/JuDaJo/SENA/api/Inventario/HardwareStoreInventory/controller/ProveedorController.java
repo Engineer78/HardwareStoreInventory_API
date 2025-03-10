@@ -21,4 +21,18 @@ public class ProveedorController {
         this.proveedorRepository = proveedorRepository;
     }
 
+    // Obtener todos los proveedores
+    @GetMapping
+    public ResponseEntity<List<ProveedorDTO>> listarProveedores() {
+        List<ProveedorDTO> proveedores = proveedorRepository.findAll().stream()
+                .map(proveedor -> new ProveedorDTO(
+                        proveedor.getIdProveedor(),
+                        proveedor.getNombreProveedor(),
+                        proveedor.getNitProveedor(),
+                        proveedor.getTelefonoProveedor(),
+                        proveedor.getDireccionProveedor()))
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(proveedores);
+    }
+
 }
