@@ -6,5 +6,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-public interface ProductoProveedorRepository {
+public interface ProductoProveedorRepository extends JpaRepository<ProductoProveedor, Integer> {
+    // Ajustando los nombres según Producto.idProducto
+    Optional<ProductoProveedor>
+    findByProductoIdProductoAndProveedorIdProveedor(Integer idProducto, Integer idProveedor);
 }
