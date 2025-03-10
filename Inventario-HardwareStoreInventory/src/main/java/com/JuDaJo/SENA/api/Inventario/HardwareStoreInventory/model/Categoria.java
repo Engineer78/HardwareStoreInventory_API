@@ -101,4 +101,24 @@ public class Categoria {
         this.productos = productos;
     }
 
+    /**
+     * Agrega un producto a la lista de productos asociados a esta categoría.
+     *
+     * @param producto Producto a agregar.
+     */
+    public void agregarProducto(Producto producto) {
+        this.productos.add(producto);
+        producto.setCategoria(this); // Relación bidireccional
+    }
+
+    /**
+     * Elimina un producto de la lista de productos asociados a esta categoría.
+     *
+     * @param producto Producto a eliminar.
+     */
+    public void eliminarProducto(Producto producto) {
+        this.productos.remove(producto);
+        producto.setCategoria(null); // Rompe la relación bidireccional
+    }
+
 }
