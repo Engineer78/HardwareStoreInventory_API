@@ -19,4 +19,10 @@ public class Categoria {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idCategoria;
 
+    /**
+     * Nombre de la categoría.
+     */
+    @NotBlank(message = "El nombre de la categoría no puede estar en blanco")
+    @Size(max = 100, message = "El nombre de la categoría no puede exceder los 100 caracteres")
+    private String nombreCategoria;
 }
