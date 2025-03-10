@@ -98,6 +98,54 @@ public class ProductoController {
                 .orElse(ResponseEntity.notFound().build()); // Devuelve 404 si no se encuentra
     }
 
+    /**
+     * Crea un nuevo producto en el inventario.
+     *
+     * @param productCreationDTO DTO con los datos necesarios para crear el producto.
+     * @param bindingResult Resultado de la validación de los datos enviados.
+     * @return Producto creado en formato DTO o detalles del error.
+     */
+    @PostMapping
+    @Transactional
+    public ResponseEntity<?> addProducto(@Valid @RequestBody ProductoCreationDTO productCreationDTO, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            ValidationErrorDTO errorDTO = new ValidationErrorDTO(bindingResult.getAllErrors());
+            return ResponseEntity.badRequest().body(errorDTO);
+        }
+
+        try {
+            Categoria categoria = categoriaRepository.findById(productCreationDTO.getIdCategoria())
+                    .orElseThrow(() -> new IllegalArgumentException("La categoría con ID " + productCreationDTO.getIdCategoria() + " no existe."));
+
+            Proveedor proveedor = proveedorRepository.findById(productCreationDTO.getIdProveedor())
+                    .orElseThrow(() -> new IllegalArgumentException("El proveedor con ID " + productCreationDTO.getIdProveedor() + " no existe."));
+
+            Producto nuevoProducto = new Producto();
+            ProductoDTO productoDTO = productCreationDTO.getProducto();
+            nuevoProducto.setCodigoProducto(productoDTO.getCodigoProducto());
+            nuevoProducto.setNombreProducto(productoDTO.getNombreProducto());
+            nuevoProducto.setCantidad(productoDTO.getCantidad());
+            nuevoProducto.setValorUnitarioProducto(productoDTO.getValorUnitarioProducto());
+            nuevoProducto.setCategoria(categoria);
+
+            ProductoProveedor productoProveedor = new ProductoProveedor();
+            productoProveedor.setProducto(nuevoProducto);
+            productoProveedor.setProveedor(proveedor);
+            productoProveedor.setPrecioCompra(productoDTO.getValorUnitarioProducto());
+            nuevoProducto.setProductoProveedores(List.of(productoProveedor));
+
+            productoRepository.save(nuevoProducto);
+
+            return new ResponseEntity<>(new ProductoDTO(nuevoProducto), HttpStatus.CREATED);
+
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error al crear el producto: " + e.getMessage());
+        }
+    }
+
     
 
 
