@@ -14,4 +14,11 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api/proveedores")
 public class ProveedorController {
+
+    private final ProveedorRepository proveedorRepository;
+
+    public ProveedorController(ProveedorRepository proveedorRepository) {
+        this.proveedorRepository = proveedorRepository;
+    }
+
 }
