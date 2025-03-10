@@ -39,6 +39,13 @@ public class ProductoProveedor {
      */
     public ProductoProveedor() {
     }
+    /**
+     * Constructor que inicializa la relación Producto-Proveedor con los datos proporcionados.
+     *
+     * @param producto Producto asociado.
+     * @param proveedor Proveedor asociado.
+     * @param precioCompra Precio de compra del producto.
+     */
 
 
 
