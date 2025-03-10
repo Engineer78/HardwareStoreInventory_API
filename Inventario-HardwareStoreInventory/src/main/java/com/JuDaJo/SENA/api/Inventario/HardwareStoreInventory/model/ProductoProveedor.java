@@ -8,4 +8,10 @@ import java.util.Objects;
  */
 @Entity
 public class ProductoProveedor {
+    /**
+     * Identificador único de la relación Producto-Proveedor.
+     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idProductoProveedor;
 }
