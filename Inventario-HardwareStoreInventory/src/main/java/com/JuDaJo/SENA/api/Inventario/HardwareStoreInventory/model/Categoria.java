@@ -32,4 +32,9 @@ public class Categoria {
     @OneToMany(mappedBy = "categoria", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Producto> productos = new ArrayList<>();
 
+    /**
+     * Constructor vacío requerido por JPA.
+     */
+    public Categoria() {
+    }
 }
