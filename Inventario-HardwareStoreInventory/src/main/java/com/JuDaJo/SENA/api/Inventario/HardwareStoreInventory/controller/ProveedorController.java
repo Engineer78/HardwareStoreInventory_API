@@ -49,4 +49,17 @@ public class ProveedorController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/nit/{nitProveedor}")
+    public ResponseEntity<ProveedorDTO> buscarProveedorPorNit(@PathVariable String nitProveedor) {
+        return proveedorRepository.findByNitProveedor(nitProveedor)
+                .map(proveedor -> new ProveedorDTO(
+                        proveedor.getIdProveedor(),
+                        proveedor.getNombreProveedor(),
+                        proveedor.getNitProveedor(),
+                        proveedor.getTelefonoProveedor(),
+                        proveedor.getDireccionProveedor()))
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
 }
