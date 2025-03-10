@@ -46,4 +46,59 @@ public class Categoria {
     public Categoria(String nombreCategoria) {
         this.nombreCategoria = nombreCategoria;
     }
+
+    /**
+     * Obtiene el identificador de la categoría.
+     *
+     * @return Identificador de la categoría.
+     */
+    public Integer getIdCategoria() {
+        return idCategoria;
+    }
+
+    /**
+     * Establece el identificador de la categoría.
+     *
+     * @param idCategoria Identificador de la categoría.
+     */
+    public void setIdCategoria(int idCategoria) {
+        this.idCategoria = idCategoria;
+    }
+
+    /**
+     * Obtiene el nombre de la categoría.
+     *
+     * @return Nombre de la categoría.
+     */
+    public String getNombreCategoria() {
+        return nombreCategoria;
+    }
+
+    /**
+     * Establece el nombre de la categoría.
+     *
+     * @param nombreCategoria Nombre de la categoría.
+     */
+    public void setNombreCategoria(String nombreCategoria) {
+        this.nombreCategoria = nombreCategoria;
+    }
+
+    /**
+     * Obtiene la lista de productos asociados a esta categoría.
+     *
+     * @return Lista de productos.
+     */
+    public List<Producto> getProductos() {
+        return productos;
+    }
+
+    /**
+     * Establece la lista de productos asociados a esta categoría.
+     *
+     * @param productos Lista de productos.
+     */
+    public void setProductos(List<Producto> productos) {
+        this.productos = productos;
+    }
+
 }
