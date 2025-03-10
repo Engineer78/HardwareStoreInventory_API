@@ -10,4 +10,14 @@ import jakarta.validation.constraints.NotNull;
  */
 
 public class ProductoCreationDTO {
+
+    @NotNull(message = "El producto es obligatorio")
+    @Valid
+    private ProductoDTO producto;
+
+    @NotNull(message = "El ID de la categoría es obligatorio")
+    private Integer idCategoria;
+
+    @NotNull(message = "El ID del proveedor es obligatorio")
+    private Integer idProveedor;
 }
