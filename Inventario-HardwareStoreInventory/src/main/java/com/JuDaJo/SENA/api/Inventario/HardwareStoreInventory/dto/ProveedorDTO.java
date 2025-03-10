@@ -27,4 +27,14 @@ public class ProveedorDTO {
     // Constructor vacío
     public ProveedorDTO() {}
 
+    // Constructor con todos los atributos
+    public ProveedorDTO(int idProveedor, String nombreProveedor, String nitProveedor, String telefonoProveedor, String direccionProveedor) {
+        this.idProveedor = idProveedor;
+        this.nombreProveedor = nombreProveedor;
+        this.nitProveedor = nitProveedor;
+        this.telefonoProveedor = telefonoProveedor;
+        this.direccionProveedor = direccionProveedor;
+    }
+    
+
 }
