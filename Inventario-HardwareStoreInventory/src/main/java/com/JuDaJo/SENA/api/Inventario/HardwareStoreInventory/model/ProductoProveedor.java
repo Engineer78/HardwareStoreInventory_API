@@ -46,6 +46,11 @@ public class ProductoProveedor {
      * @param proveedor Proveedor asociado.
      * @param precioCompra Precio de compra del producto.
      */
+    public ProductoProveedor(Producto producto, Proveedor proveedor, double precioCompra) {
+        this.producto = producto;
+        this.proveedor = proveedor;
+        this.precioCompra = precioCompra;
+    }
 
 
 
