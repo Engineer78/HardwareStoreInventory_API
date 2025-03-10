@@ -98,5 +98,7 @@ public class ProductoController {
                 .orElse(ResponseEntity.notFound().build()); // Devuelve 404 si no se encuentra
     }
 
+    
+
 
 }
