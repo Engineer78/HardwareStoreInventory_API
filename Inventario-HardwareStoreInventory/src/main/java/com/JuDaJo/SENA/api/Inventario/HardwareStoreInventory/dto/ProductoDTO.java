@@ -34,4 +34,7 @@ public class ProductoDTO {
     private String nombreCategoria;
 
     private List<Integer> productoProveedores;
+
+    // Constructor vacío para serialización/deserialización
+    public ProductoDTO() {}
 }
