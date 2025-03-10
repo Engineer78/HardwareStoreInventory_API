@@ -14,4 +14,12 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/api/categorias")
 public class CategoriaController {
+
+    private final CategoriaRepository categoriaRepository;
+
+    public CategoriaController(CategoriaRepository categoriaRepository) {
+        this.categoriaRepository = categoriaRepository;
+    }
+
+    
 }
